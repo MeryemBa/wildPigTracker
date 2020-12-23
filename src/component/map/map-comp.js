@@ -1,12 +1,46 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import InteractiveMap from "react-map-gl";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import { Marker, Popup } from "react-map-gl";
+import { formatRelative, parseISO } from "date-fns";
 
+async function fetchPoints() {
+  const response = await fetch("./api/points");
+  const { points } = await response.json();
+  return points.map((point) => ({
+    id: point._id,
+    longitude: point.location.coordinates[0],
+    latitude: point.location.coordinates[1],
+    createdAt: point.createdAt,
+  }));
+ 
+ 
+}
 
-export default function Map({ locations }) {
+async function createPoint(newpoint) {
+  const response = await fetch("./api/points/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({point:newpoint }),
+  });
+  const data = await response.json();
+  return data.point;
+}
+export default function Map() {
+  
+  useEffect(() => {
+    fetchPoints().then(res => {
+      console.log("fetch result")
+     setmarker(res);
+    })
+  
+  }, [fetchPoints]);
+
+ 
     const [marker, setmarker] = useState([]);
     const [showPopup,setshowPopup]=useState(false);
-    const [location,setLocation]=useState({});
+    const [locationId,setLocationId]=useState("");
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -18,16 +52,14 @@ export default function Map({ locations }) {
  const apiKey=process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 const handeClick=({lngLat:[longitude,latitude]})=>{
 
-    setmarker((prevMarker)=>[...prevMarker,{longitude,latitude}])
-    setLocation({longitude,latitude})
+    setmarker((prevMarker)=>[...prevMarker,{longitude,latitude, createdAt:new Date(),id:new Date()}]);
+    createPoint({longitude,latitude});
+    // setLocation({longitude,latitude});
    
 }
 const handelPopup=(e)=>{
 
-const latitude=parseFloat(e.target.attributes.latitude.value);
-
-const longitude=parseFloat(e.target.attributes.longitude.value );
-  setLocation({longitude,latitude});
+  setLocationId(e.target.attributes.id.value);
     setshowPopup(true);
    
 }
@@ -41,18 +73,19 @@ const longitude=parseFloat(e.target.attributes.longitude.value );
       onClick={handeClick}
     >
      {marker.map((m,i)=>(
-      <div  key={i}>
+      <div  key={i}  >
      <Marker longitude={m.longitude} latitude={m.latitude} >
-         <img src="/pig.png" style={{marginLeft:"-12px",marginTop:"-24px"}} width="24" height="24" longitude={m.longitude} latitude={m.latitude}  onClick={handelPopup} />
+         <img src="/pig.png" style={{marginLeft:"-12px",marginTop:"-12px"}}
+          width="24" height="24" longitude={m.longitude} latitude={m.latitude}  id={m.id} onClick={handelPopup}  />
          </Marker>
-     {(JSON.stringify(m) === JSON.stringify(location)  && showPopup)&&<Popup
+     {(m.id === locationId  && showPopup)&&<Popup
         longitude={m.longitude} 
         latitude={m.latitude}
      closeButton={true}
      closeOnClick={false}
-     onClose={() =>{setshowPopup(false),setLocation({})}}
+     onClose={() =>{setshowPopup(false),setLocationId("")}}
      anchor="top" >
-     <div>{`You are here ${i}`}</div>
+     <div >Pig spotted {formatRelative(parseISO(m.createdAt), new Date())}</div>
    </Popup>}
    </div>
      )
