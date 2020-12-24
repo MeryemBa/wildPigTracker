@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Layout from "../component/layout/layout-comp";
+import InfoButton from "../component/infobutton/infobutton-comp";
 
 
 
@@ -17,7 +18,7 @@ export default function IndexPage() {
     
       <Layout>
         <Map />
-    
+    <InfoButton/>
         </Layout>
   );
 }

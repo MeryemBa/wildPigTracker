@@ -11,7 +11,7 @@ try {
     
 } catch (e) {
     res.statusCode(500);
-    res.json({error:"There is a error on the server"})
+    res.json({error:"There is an error on the server"})
     
 }
 

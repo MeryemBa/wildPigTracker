@@ -1,7 +1,10 @@
 import App,{Container} from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Hydrate } from 'react-query/hydration'
 import Head from 'next/head';
 import React from 'react';
 import "../styles/globals.css";
+const queryClient = new QueryClient()
 class MyApp extends App {
     static async getInitialProps({Component, ctx}) {
         let pageProps = {};
@@ -25,7 +28,7 @@ class MyApp extends App {
                     <title>{title}</title>
                     <meta charSet="utf-8" />
                     <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-                    <meta content="width=device-width, initial-scale=1" name="viewport" />
+                    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
                     <link href="../../public/favicon.ico" rel="shortcut icon" />
                     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
                   
@@ -37,9 +40,12 @@ class MyApp extends App {
                     <meta content={description} property="og:description" />
                   
                 </Head>
+                <QueryClientProvider client={queryClient}>
                 
-                <Component {...pageProps} />
-              
+                <Hydrate state={pageProps.dehydratedState}>
+         <Component {...pageProps} />
+       </Hydrate>
+                </QueryClientProvider>
               
             </Container>
         );

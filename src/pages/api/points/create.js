@@ -4,7 +4,6 @@ export default async  (req, res) => {
 
 try {
  const {db}= await connect();
- console.log(db);
  const {point:{ latitude, longitude }}=req.body;
 
  const result = await db.collection("points").insertOne({
@@ -24,7 +23,7 @@ res.json({ point: result.ops[0] });
   
 } catch (error) {
   res.statusCode(500);
-  res.json({error:"There is a error on the server"})
+  res.json({error:"There is an error on the server"})
   
 }
 
