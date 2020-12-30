@@ -1,10 +1,10 @@
 import React from 'react';
 import {Popup } from "react-map-gl";
-import { formatRelative, parseISO } from "date-fns";
+
 import style from "./popup.module.css";
 
 
-function PopupInfo({handelClose,point}) {
+function PopupInfo({handelClose,point,children}) {
     return (
         <Popup
         className={style.info}
@@ -14,7 +14,7 @@ function PopupInfo({handelClose,point}) {
      closeOnClick={false}
      onClose={() =>{handelClose()}}
      anchor="top" >
-     <div >Pig spotted {formatRelative(parseISO(point.createdAt), new Date())}</div>
+     <div className={style.infoMessage} >{children}</div>
    </Popup>
    )
 }

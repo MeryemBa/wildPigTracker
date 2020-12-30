@@ -1,6 +1,6 @@
 import React from 'react';
 import {GeolocateControl} from "react-map-gl";
-import styles from  './userlocation.module.css'
+import styles from  './user-geolocation.module.css'
 
 function UserLocation() {
     return (

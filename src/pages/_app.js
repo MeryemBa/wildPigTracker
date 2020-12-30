@@ -4,6 +4,9 @@ import { Hydrate } from 'react-query/hydration'
 import Head from 'next/head';
 import React from 'react';
 import "../styles/globals.css";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+
 const queryClient = new QueryClient()
 class MyApp extends App {
     static async getInitialProps({Component, ctx}) {
@@ -18,9 +21,9 @@ class MyApp extends App {
 
     render() {
         const {Component, pageProps} = this.props;
-        const description = 'Creating a non-SSR map component inside a Next.js project.';
+        const description = 'Creating a Wild Pig Tracker using MapBox.';
 
-        const title = `Next.js + Mapbox Demo `;
+        const title = `Wild Pig Tracker `;
         
         return (
             <Container>
@@ -29,13 +32,13 @@ class MyApp extends App {
                     <meta charSet="utf-8" />
                     <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
                     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-                    <link href="../../public/favicon.ico" rel="shortcut icon" />
+                    <link href="/favicon.ico" rel="shortcut icon" />
                     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
                   
 
                    <meta content={description} name="description" />
                     <meta property="og:title" content={title} />
-                    <meta property="og:image" content="/static/banner.jpg" />
+            
                     <meta content="en_US" property="og:locale" />
                     <meta content={description} property="og:description" />
                   
