@@ -3,7 +3,7 @@ import InteractiveMap,{ Marker} from "react-map-gl";
 import Geocoder from 'react-map-gl-geocoder';
 import { useQuery, useMutation,useQueryClient } from "react-query";
 import { v1 as uuidv1 } from 'uuid';
-import { formatRelative, parseISO } from "date-fns";
+
 
 import UserLocation from "../user-geolocation/user-geolocation-comp";
 import  PopupInfo  from "../popup/popup-comp";
@@ -122,7 +122,7 @@ const handelClosePopup=()=>{
   return (
     <InteractiveMap
 
-      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapStyle="mapbox://styles/mapbox/streets-v9?optimize=true"
     
       {...viewport}
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
@@ -148,10 +148,11 @@ const handelClosePopup=()=>{
      {points.length===0?<Loader message="Loding Markers..."/> : points.map((point,i)=>(
       <div  key={i}  >
      <Marker longitude={point.longitude} latitude={point.latitude} >
-         <img src="/pig.png" style={{marginLeft:"-12px",marginTop:"-12px"}}
+         <img src="/pig.png" alt="wild pig"style={{marginLeft:"-12px",marginTop:"-12px"}}
           width="24" height="24" longitude={point.longitude} latitude={point.latitude}  id={point.id} onClick={handelPopup}  />
          </Marker>
-     {(point.id === locationId  && showPopup) && < PopupInfo point={point} handelClose={handelClosePopup}>Pig spotted {formatRelative(parseISO(point.createdAt), new Date())}</ PopupInfo>}
+     {(point.id === locationId  && showPopup) && < PopupInfo point={point} handelClose={handelClosePopup} />
+       }
   </div> 
  
      )
