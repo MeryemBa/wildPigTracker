@@ -15,15 +15,16 @@ function InfoButton() {
                     
                     <h5>why this application exists?</h5>
                     <p > 
-                    In the last years, Morocco has several cases of accidents relate to wild pig's appearance in a lot of hometowns ex. : car accident, attacking people, or destroying properties. Therefore we decide to make this app so that people can keep track of the last place people have seen a wild boar to take their precautions.
-                    </p> 
+                    In the last few years, Morocco has lived several cases of accidents relate to wild pig's appearance in hometowns, ex.:  car accident,  attacking people, or destroying properties. Therefore, 
+                    we decide to make this app so that users can keep track of places where wild boar appeared to take their precautions.
+                      </p> 
                     <h5>I saw a pig what should I do?</h5>
                     <p > 
                     you can use either the location button or the search bar to locate yourself and with a simple click you will add a marker, now everybody will take into consideration the information you provide for their safety
                     </p> 
                     <h5>I can mark pig in the water?</h5>
                     <p > 
-                    It turned out that pigs are a perfect swimmer and that is a fact. So technically you can see a pig on the water surfaces.
+                    It turned out that pigs are a perfect swimmer, and that is a scientific fact. So technically, you can see a pig on the water surfaces.
                     </p> 
                    
                     </div>

@@ -58,6 +58,10 @@
 .infoContainer h5 {
   text-transform: capitalize;
 }
+.infoContainer p {
+  text-align: justify;
+  line-height: 1.5;
+}
 .closeInfoButton {
   width: 24px;
   height: 24px;

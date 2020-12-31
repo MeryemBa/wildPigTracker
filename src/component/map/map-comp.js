@@ -89,6 +89,7 @@ const useCreatPoint=()=>{
     latitude: 33.527870,
     longitude: -5.105100,
     zoom: 9
+  
   });
 
 useEffect(() => {
@@ -129,6 +130,7 @@ const handelClosePopup=()=>{
 
       onViewportChange={handleViewportChange}
       onClick={handeClick}
+     
       ref={mapRef}
     >
       <UserLocation/>
