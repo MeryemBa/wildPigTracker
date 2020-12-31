@@ -6,31 +6,31 @@ A simple CURD application using Next js, MongoDB and MapBox.
 
 You can view a live demo over at url
 
-### Clone this repo
+- Clone this repo.
 
-### adding API keys and connecting to the backend
+- Add API keys and database connection.
 
-To run this application localy:
+  To run this application localy:
 
-1.  First, you need a Mapbox access token, logging into [mapbox](https://www.mapbox.com/) to get one for free.
-1.  Second, you should have a MongoDB database URL connection.
+        1.  First, you need a Mapbox access token, logging into [mapbox](https://www.mapbox.com/) to get one for free.
+        1.  Second, you should have a MongoDB database URL connection.
 
-For best practice add this keys to an .env.local file or feel free to change theme respectivly in map folder and utils folder.
+  For best practice, add these keys to a .env.local file, or feel free to change them directly in the map folder and utils folder.
 
-now that is all setup install the dependencies and run the developoment server
+- Install dependencies and run the development server.
 
-### Instal dependencies
+  1. Instal dependencies
 
-```bash
-npm install
-# or
-yarn install
-```
+     ```bash
+     npm install
+     # or
+     yarn install
+     ```
 
-### run developement server
+  1. Run developement server
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+     ```bash
+     npm run dev
+     # or
+     yarn dev
+     ```
