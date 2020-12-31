@@ -79,7 +79,7 @@
   }
 }
 @media screen and (max-width: 480px) {
-  .infoButton {
+  .infoButtonContainer {
     left: 15px;
   }
   .infoContainer {
