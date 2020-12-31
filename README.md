@@ -1,7 +1,7 @@
 # Wild Pig Tracker
 
-A simple CURD application using Next js, MongoDB and MapBox.
-You can view a live demo over at url
+A simple CURD application using Next js, MongoDB, and MapBox.  
+You can view a live demo over at URL
 
 ## Getting Started
 
