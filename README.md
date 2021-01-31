@@ -3,6 +3,12 @@
 A simple CURD application using Next js, MongoDB, and MapBox.  
 You can view a live demo over at [Wild Pig Tracker](https://wild-pig-tracker.vercel.app)
 
+## Technology Used
+- Next js
+- MongoDB
+- MapBox
+- [React-map-gl](http://visgl.github.io/react-map-gl/)
+
 ## Getting Started
 
 - Clone this repo.
